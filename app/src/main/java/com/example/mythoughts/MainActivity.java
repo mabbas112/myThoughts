@@ -2,7 +2,12 @@ package com.example.mythoughts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -26,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
          switch (view.getId()){
              case R.id.register:
-                 startActivity(new Intent(this, register_user.class));
+                 startActivity(new Intent(this, activity_register_user.class));
                  break;
              case R.id.login:
                   checkValidation();
