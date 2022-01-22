@@ -18,7 +18,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+    android:gravity="center_horizontal" />
 
     <EditText
         android:id="@+id/email"
@@ -68,7 +69,8 @@
         android:backgroundTint="#2196F3"
         android:text="Forget password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        android:layout_marginLeft="44dp" />
 
     <Button
         android:id="@+id/register"
