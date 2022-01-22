@@ -31,4 +31,68 @@ public class activity_register_user extends AppCompatActivity {
         progressBar=(ProgressBar) findViewById(R.id.progressBar);
    
     }
+     public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.banner:
+               startActivity(new Intent(this,MainActivity.class));
+                break;
+            case R.id.login:
+                registeruser();
+                break;
+        }
+    }
+
+    private void registeruser() {
+        String FullName= edittext_name.getText().toString().trim();
+        String Email= edittext_email.getText().toString().trim();
+        String Password= edittext_password.getText().toString().trim();
+        if(FullName.isEmpty()){
+            edittext_name.setError("Full name is required!");
+            edittext_name.requestFocus();
+            return;
+        }
+        if(Email.isEmpty()){
+            edittext_email.setError("Email is required!");
+            edittext_email.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
+            edittext_email.setError("Please provide valid email!");
+            edittext_email.requestFocus();
+            return;
+        }
+        if(Password.isEmpty()){
+            edittext_password.setError("Password is required!");
+            edittext_password.requestFocus();
+            return;
+        }
+        if(Password.length()<6){
+            edittext_password.setError("Password Should not less than 6!");
+            edittext_password.requestFocus();
+            return;
+        }
+       /* progressBar.setVisibility(View.VISIBLE);
+        mAuth.createUserWithEmailAndPassword(Email,Password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            user userObj=new user(FullName,Email);
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userObj).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                     if(task.isSuccessful()){
+                                         Toast.makeText(com.example.mythoughts.register_user.this, "User has been registered Successfully!",Toast.LENGTH_LONG).show();
+                                         progressBar.setVisibility(View.VISIBLE);
+                                     }else{
+                                         Toast.makeText(com.example.mythoughts.register_user.this, "Failed to registered!",Toast.LENGTH_LONG).show();
+                                     progressBar.setVisibility(View.GONE);
+                                     }
+                                }
+                            });
+                        }
+                    }
+                });*/
+    }
 }
