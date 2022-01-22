@@ -11,21 +11,24 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button register,login;
+    private Button register,login,forgetPassword;
     private EditText edittext_email, edittext_password;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         register = (Button) findViewById(R.id.register);
-        register.setOnClickListener(this);
-
         login = (Button) findViewById(R.id.login);
-        login.setOnClickListener(this);
-
+        forgetPassword=(Button) findViewById(R.id.forgetPassword);
         edittext_email= (EditText) findViewById(R.id.email);
         edittext_password= (EditText) findViewById(R.id.password);
+
+        register.setOnClickListener(this);
+        login.setOnClickListener(this);
+        forgetPassword.setOnClickListener(this);
+
         
     }
     public void onClick(View view) {

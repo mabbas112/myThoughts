@@ -1,5 +1,6 @@
 package com.example.mythoughts;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,21 +11,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 //import com.google.firebase.auth.FirebaseAuth;
 
 public class activity_register_user extends AppCompatActivity implements View.OnClickListener {
-    //private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     private EditText edittext_name,edittext_email, edittext_password;
     private TextView banner;
-    private Button register_user;
+    private Button register_user,already_register;
     private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
-        //mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         
         //logo image
         banner =(TextView) findViewById(R.id.banner);
@@ -32,6 +40,8 @@ public class activity_register_user extends AppCompatActivity implements View.On
         //Register button
         register_user = (Button) findViewById(R.id.login);
         register_user.setOnClickListener(this);
+        already_register = (Button) findViewById(R.id.already_register);
+        already_register.setOnClickListener(this);
         //Input fields
         edittext_name = (EditText) findViewById(R.id.fullname);
         edittext_email= (EditText) findViewById(R.id.email);
@@ -43,15 +53,16 @@ public class activity_register_user extends AppCompatActivity implements View.On
      public void onClick(View view) {
         switch (view.getId()){
             case R.id.banner:
-               startActivity(new Intent(this,MainActivity.class));
+            case R.id.already_register:
+                startActivity(new Intent(this,MainActivity.class));
                 break;
             case R.id.login:
-                registeruser();
+                registerUser();
                 break;
         }
     }
 
-    private void registeruser() {
+    private void registerUser() {
         String FullName= edittext_name.getText().toString().trim();
         String Email= edittext_email.getText().toString().trim();
         String Password= edittext_password.getText().toString().trim();
@@ -80,28 +91,23 @@ public class activity_register_user extends AppCompatActivity implements View.On
             edittext_password.requestFocus();
             return;
         }
-       /* progressBar.setVisibility(View.VISIBLE);
+
+       progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(Email,Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            user userObj=new user(FullName,Email);
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userObj).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                     if(task.isSuccessful()){
-                                         Toast.makeText(com.example.mythoughts.register_user.this, "User has been registered Successfully!",Toast.LENGTH_LONG).show();
-                                         progressBar.setVisibility(View.VISIBLE);
-                                     }else{
-                                         Toast.makeText(com.example.mythoughts.register_user.this, "Failed to registered!",Toast.LENGTH_LONG).show();
-                                     progressBar.setVisibility(View.GONE);
-                                     }
-                                }
-                            });
+                            Toast.makeText(activity_register_user.this,"Login Successful",Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(activity_register_user.this,"Login Failed", Toast.LENGTH_LONG).show();
                         }
                     }
-                });*/
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
     }
 }
