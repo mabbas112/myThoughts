@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         if(Password.length()<6){
+            
             edittext_password.setError("Password Should not less than 6!");
             edittext_password.requestFocus();
             return;
