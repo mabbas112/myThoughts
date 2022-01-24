@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                  break;
              case R.id.login:
                   checkValidation();
-                  //loginUser();
+                  loginUser();
                  break;
          }
     }
@@ -80,6 +80,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+    private void loginUser() {
+        String Email= edittext_email.getText().toString().trim();
+        String Password= edittext_password.getText().toString().trim();
+        auth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this,"Login Successful",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this,activity_home.class));
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+Toast.makeText(MainActivity.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+      }
 
     //we will check if the user is already login take to home screen
     @Override
