@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/7th SMESTER DATA/Mobile Computing/Semester Project/myThoughts/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17962962962962964" />
+        <entry key="..\:/7th SMESTER DATA/Mobile Computing/Semester Project/myThoughts/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.17962962962962964" />
+        <entry key="..\:/7th SMESTER DATA/Mobile Computing/Semester Project/myThoughts/app/src/main/res/layout/activity_add_post.xml" value="0.2" />
         <entry key="..\:/7th SMESTER DATA/Mobile Computing/Semester Project/myThoughts/app/src/main/res/layout/activity_home.xml" value="0.190625" />
         <entry key="..\:/7th SMESTER DATA/Mobile Computing/Semester Project/myThoughts/app/src/main/res/layout/activity_main.xml" value="0.1765625" />
         <entry key="..\:/7th SMESTER DATA/Mobile Computing/Semester Project/myThoughts/app/src/main/res/layout/activity_register_user.xml" value="0.190625" />

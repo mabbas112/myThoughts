@@ -32,7 +32,15 @@ public class activity_home extends AppCompatActivity {
             auth.signOut();
             startActivity(new Intent(activity_home.this,MainActivity.class));
         }
+        if(item.getItemId()==R.id.action_add_post){
+            startActivity(new Intent(activity_home.this,activity_addPost.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
 }
