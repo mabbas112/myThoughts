@@ -18,8 +18,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
-//import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class activity_register_user extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
@@ -92,22 +93,29 @@ public class activity_register_user extends AppCompatActivity implements View.On
             return;
         }
 
-       progressBar.setVisibility(View.VISIBLE);
+
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(Email,Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(activity_register_user.this,"Login Successful",Toast.LENGTH_LONG).show();
-                        }else{
-                            Toast.makeText(activity_register_user.this,"Login Failed", Toast.LENGTH_LONG).show();
+                            user userObj=new user(Email,Password);
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userObj).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(com.example.mythoughts.activity_register_user.this, "User has been registered Successfully!",Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.VISIBLE);
+                                    }else{
+                                        Toast.makeText(com.example.mythoughts.activity_register_user.this, "Failed to registered!",Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
                         }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
+                });
     }
 }

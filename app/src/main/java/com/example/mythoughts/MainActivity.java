@@ -9,11 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button register,login,forgetPassword;
     private EditText edittext_email, edittext_password;
-    
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         login.setOnClickListener(this);
         forgetPassword.setOnClickListener(this);
 
-        
+        auth=FirebaseAuth.getInstance();
     }
     public void onClick(View view) {
          switch (view.getId()){
@@ -65,6 +68,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             edittext_password.setError("Password Should not less than 6!");
             edittext_password.requestFocus();
             return;
+        }
+
+    }
+
+    //we will check if the user is already login take to home screen
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user=auth.getCurrentUser();
+        if(user!=null){
+            startActivity(new Intent(MainActivity.this, activity_home.class));
         }
     }
 }
