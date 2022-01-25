@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button register,login,forgetPassword;
+    private Button register,login;
     private EditText edittext_email, edittext_password;
     FirebaseAuth auth;
     @Override
@@ -30,14 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         register = (Button) findViewById(R.id.register);
         login = (Button) findViewById(R.id.login);
-        forgetPassword=(Button) findViewById(R.id.forgetPassword);
         edittext_email= (EditText) findViewById(R.id.email);
         edittext_password= (EditText) findViewById(R.id.password);
 
         register.setOnClickListener(this);
         login.setOnClickListener(this);
-        forgetPassword.setOnClickListener(this);
-
         auth=FirebaseAuth.getInstance();
     }
     public void onClick(View view) {
