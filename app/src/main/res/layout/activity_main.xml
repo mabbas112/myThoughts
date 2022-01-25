@@ -23,8 +23,8 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="320dp"
-        android:layout_height="52dp"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
         android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Enter e-mail address"
@@ -37,21 +37,22 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="320dp"
-        android:layout_height="52dp"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
-    
+
     <Button
         android:id="@+id/login"
-        android:layout_width="161dp"
-        android:layout_height="47dp"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
         android:layout_marginTop="68dp"
         android:backgroundTint="#2196F3"
         android:text="Login"
@@ -61,28 +62,16 @@
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
-        android:id="@+id/forgetPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="36dp"
-        android:backgroundTint="#2196F3"
-        android:text="Forget password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        android:layout_marginLeft="44dp" />
-
-    <Button
         android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="136dp"
         android:backgroundTint="#2196F3"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/forgetPassword"
-        app:layout_constraintTop_toTopOf="@+id/forgetPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
-    
-    
-       
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
