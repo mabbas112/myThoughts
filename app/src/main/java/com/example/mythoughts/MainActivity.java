@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button register,login;
     private EditText edittext_email, edittext_password;
+    private TextView  forgetPassword;
     FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +34,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         login = (Button) findViewById(R.id.login);
         edittext_email= (EditText) findViewById(R.id.email);
         edittext_password= (EditText) findViewById(R.id.password);
+        forgetPassword=(TextView) findViewById(R.id.forget_password);
+
 
         register.setOnClickListener(this);
         login.setOnClickListener(this);
         auth=FirebaseAuth.getInstance();
+
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, passwordResetActivity.class));
+            }
+        });
     }
     public void onClick(View view) {
          switch (view.getId()){

@@ -106,11 +106,13 @@ public class activity_register_user extends AppCompatActivity implements View.On
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(com.example.mythoughts.activity_register_user.this, "User has been registered Successfully!",Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.VISIBLE);
+                                        Toast.makeText(com.example.mythoughts.activity_register_user.this, "User has been registered Successfully!",Toast.LENGTH_LONG).show();
+
                                     }else{
-                                        Toast.makeText(com.example.mythoughts.activity_register_user.this, "Failed to registered!",Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(com.example.mythoughts.activity_register_user.this, "Failed to registered!",Toast.LENGTH_LONG).show();
+
                                     }
                                 }
                             });
