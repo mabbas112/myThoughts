@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             edittext_email.requestFocus();
             return;
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
+        else if(!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
             edittext_email.setError("Please provide valid email!");
             edittext_email.requestFocus();
             return;
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             edittext_password.requestFocus();
             return;
         }
-        if(Password.length()<6){
+        else if(Password.length()<6){
             
             edittext_password.setError("Password Should not less than 6!");
             edittext_password.requestFocus();
